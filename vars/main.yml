@@ -1,0 +1,4 @@
+---
+# vars file for ovirt.ocp4-ipi
+base_dir: /root/ocp4-ipi
+install_dir: "{{ base_dir }}/{{ ocp_cluster_name }}"
