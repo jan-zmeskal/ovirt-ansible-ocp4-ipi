@@ -1,4 +1,10 @@
 ---
 # vars file for ovirt.ocp4-ipi
-base_dir: /root/ocp4-ipi
-install_dir: "{{ base_dir }}/{{ ocp_cluster_name }}"
+
+# Installer variables
+base_dir: /root
+install_dir_prefix: ocp4-ipi
+install_dir: "{{ base_dir }}/{{ install_dir_prefix}}-{{ ocp_cluster_name }}-{{ ansible_date_time.iso8601_basic_short }}"
+nightly_source_server: https://mirror.openshift.com
+nightly_source_path: pub/openshift-v4/x86_64/clients/ocp-dev-preview
+nightly_source_installer_file: openshift-install-linux.tar.gz

@@ -1,0 +1,8 @@
+---
+- name: Create installation directory
+  file:
+    path: "{{ install_dir}}"
+    state: directory
+
+- name: Download OpenShift installer nightly build
+  include_tasks: installer_source/nightly.yml

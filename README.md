@@ -14,7 +14,7 @@ Role Variables
 | Name                    | Default value         |                                                     |
 |-------------------------|-----------------------|-----------------------------------------------------|
 | ocp_cluster_name        | UNDEF                 |                                                     |
-| ocp_cluster_base_domain | UNDEF                 |                                                     |
+| ocp_base_domain | UNDEF                 |                                                     |
 | rhcos_use_custom_template | False | |
 
 Dependencies

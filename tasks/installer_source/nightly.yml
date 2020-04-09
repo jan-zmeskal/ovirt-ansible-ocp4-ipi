@@ -1,0 +1,9 @@
+---
+- name: Download nightly build from {{ nightly_source_server }}
+  get_url:
+    dest: "{{ install_dir }}"
+    url: "{{ nightly_source_server }}/{{ nightly_source_path }}/latest-{{ ocp_installer_version }}/{{ nightly_source_installer_file }}"
+
+- name: Extract installer
+  pause:
+    seconds: 1
