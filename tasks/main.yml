@@ -1,4 +1,8 @@
 ---
 # tasks file for ovirt.ocp4-ipi
-- name: Prepare RHV engine as an installer machine
+- name: Prepare oVirt engine as the installer machine
   include_tasks: prepare_engine.yml
+
+- name: Upload custom RHCOS template
+  include_tasks: upload_custom_rhcos.yml
+  when: rhcos_use_custom_template

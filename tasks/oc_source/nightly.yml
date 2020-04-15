@@ -1,0 +1,21 @@
+---
+- name: Download {{ oc_binary }} tool nightly build from {{ nightly_source_server }}
+  get_url:
+    dest: "{{ install_dir }}"
+    url: "{{ nightly_source_server }}/{{ nightly_source_path }}/latest-{{ ocp_installer_version }}/{{ nightly_source_oc_file }}"
+  register: oc_download
+
+- name: Extract {{ oc_binary }} tool
+  unarchive:
+    remote_src: true
+    src: "{{ oc_download.dest }}"
+    dest: "{{ install_dir }}"
+
+- name: Get {{ oc_binary }} tool version
+  shell: "{{ install_dir }}/{{ oc_binary }} version"
+  register: oc_version
+  no_log: true
+
+- name: Print {{ oc_binary }} tool version
+  debug:
+    msg: "{{ oc_version.stdout }}"

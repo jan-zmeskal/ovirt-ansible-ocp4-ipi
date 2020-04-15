@@ -1,10 +1,17 @@
 ---
 # vars file for ovirt.ocp4-ipi
 
-# Installer variables
+# oVirt variables
+trusted_ca_dir: /etc/pki/ca-trust/source/anchors
+
+# Installer and oc tools variables
 base_dir: /root
 install_dir_prefix: ocp4-ipi
 install_dir: "{{ base_dir }}/{{ install_dir_prefix}}-{{ ocp_cluster_name }}-{{ ansible_date_time.iso8601_basic_short }}"
+resources_subdir: "{{ install_dir }}/resources"
+installer_binary: openshift-install
 nightly_source_server: https://mirror.openshift.com
 nightly_source_path: pub/openshift-v4/x86_64/clients/ocp-dev-preview
 nightly_source_installer_file: openshift-install-linux.tar.gz
+oc_source: nightly
+nightly_source_oc_file: openshift-client-linux.tar.gz
