@@ -12,10 +12,18 @@
 - name: Set up oVirt credentials
   include_tasks: ovirt_credentials.yml
 
-# - name: Download OpenShift installer nightly build
-#   include_tasks: installer_source/nightly.yml
-#   when: ocp_installer_source == "nightly"
+- name: Get info about oVirt engine
+  include_tasks: ovirt_info.yml
 
-# - name: Download {{ oc_binary }} tool nightly build
-#   include_tasks: oc_source/nightly.yml
-#   when: oc_source == "nightly"
+- name: Configure OCP installation
+  include_tasks: install_config.yml
+
+# TODO: Set up /etc/resolv.conf?
+
+- name: Download OpenShift installer nightly build
+  include_tasks: installer_source/nightly.yml
+  when: ocp_installer_source == "nightly"
+
+- name: Download {{ oc_binary }} tool nightly build
+  include_tasks: oc_source/nightly.yml
+  when: oc_source == "nightly"

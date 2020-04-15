@@ -1,0 +1,26 @@
+---
+- name: Authenticate with oVirt
+  ovirt_auth:
+    url: "{{ engine_api_url }}"
+    username: "{{ engine_user }}"
+    password: "{{ engine_password }}"
+    ca_file: "{{ engine_ca_path }}/{{ engine_ca }}"
+
+- name: Get oVirt cluster info
+  ovirt_cluster_info:
+    auth: "{{ ovirt_auth }}"
+    pattern: "name={{ ovirt_cluster_name }}"
+  register: cluster_info
+  no_log: true
+
+- name: Get oVirt storage domain info
+  ovirt_storage_domain_info:
+    auth: "{{ ovirt_auth }}"
+    pattern: "name={{ ovirt_storage_domain_name }}"
+  register: storage_domain_info
+  no_log: true
+
+- name: Register IDs of oVirt cluster and storage domain
+  set_fact:
+    ovirt_cluster_id: "{{ cluster_info.ovirt_clusters[0].id }}"
+    ovirt_storage_domain_id: "{{ storage_domain_info.ovirt_storage_domains[0].id }}"

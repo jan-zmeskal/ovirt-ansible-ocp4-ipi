@@ -3,6 +3,8 @@
 
 # oVirt variables
 trusted_ca_dir: /etc/pki/ca-trust/source/anchors
+engine_ca_path: /etc/pki/ovirt-engine
+engine_ca: ca.pem
 
 # Installer and oc tools variables
 base_dir: /root
@@ -15,3 +17,7 @@ nightly_source_path: pub/openshift-v4/x86_64/clients/ocp-dev-preview
 nightly_source_installer_file: openshift-install-linux.tar.gz
 oc_source: nightly
 nightly_source_oc_file: openshift-client-linux.tar.gz
+
+# Installation files
+ovirt_credentials_file: ovirt-config.yaml
+install_config_file: install-config.yaml

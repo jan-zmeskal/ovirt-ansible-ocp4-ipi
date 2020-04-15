@@ -1,6 +1,7 @@
-ovirt_url:
-ovirt_username:
-ovirt_password:
+ovirt_url: "{{ engine_api_url }}"
+ovirt_username: "{{ engine_user }}"
+ovirt_password: "{{ engine_password }}"
 ovirt_ca_bundle: |-
-  -----BEGIN CERTIFICATE-----
-  -----END CERTIFICATE-----
+{% for line in engine_ca_content.stdout_lines %}
+  {{ line }}
+{% endfor %}
