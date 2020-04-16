@@ -1,7 +1,7 @@
 ---
 - block:
     - name: Install OpenShift {{ ocp_installer_version }} on oVirt without using custom RHCOS template
-      shell: "{{ install_dir }}/{{ installer_binary }} create cluster --dir={{ resources_subdir }} --log-level=debug"
+      shell: "{{ install_dir }}/{{ installer_binary }} create cluster --dir={{ resources_subdir }} --log-level={{ ocp_installer_log_level }}"
       environment:
         OVIRT_CONFIG: "{{ install_dir }}/{{ ovirt_credentials_file }}"
       when: not rhcos_use_custom_template

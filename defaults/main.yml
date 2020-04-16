@@ -4,6 +4,7 @@
 # General installation info
 ocp_installer_source: nightly
 ocp_installer_version: 4.4
+ocp_installer_log_level: debug
 
 # RHCOS
 rhcos_use_custom_template: false
