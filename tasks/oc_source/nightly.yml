@@ -19,3 +19,4 @@
 - name: Print {{ oc_binary }} tool version
   debug:
     msg: "{{ oc_version.stdout }}"
+    verbosity: 2

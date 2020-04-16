@@ -20,3 +20,4 @@
 - name: Print installer version
   debug:
     msg: "OpenShift Installer Version: {{ installer_version.stdout_lines[0].split()[-1] }}"
+    verbosity: 2

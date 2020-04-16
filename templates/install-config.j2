@@ -5,13 +5,13 @@ compute:
   hyperthreading: Enabled
   name: worker
   platform: {}
-  replicas: 3
+  replicas: {{ worker_count }}
 controlPlane:
   architecture: amd64
   hyperthreading: Enabled
   name: master
   platform: {}
-  replicas: 3
+  replicas: {{ master_count }}
 metadata:
   creationTimestamp: null
   name: {{ ocp_cluster_name }}
@@ -33,7 +33,7 @@ platform:
     ovirt_network_name: {{ ovirt_network_name }}
     ovirt_storage_domain_id: {{ ovirt_storage_domain_id }}
 publish: External
-pullSecret: '{{ pull_secret }}'
+pullSecret: '{{ pull_secret | to_json }}'
 sshKey: |
 {% for ssh_key in ssh_keys %}
   {{ ssh_key }}

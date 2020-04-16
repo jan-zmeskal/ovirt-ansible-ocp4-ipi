@@ -11,3 +11,5 @@ rhcos_use_custom_template: false
 oc_binary: oc  # Alternative is kubectl
 ovirt_network_name: ovirtmgmt
 tmpfs_for_master_nodes: false  # Not implemented yet
+master_count: 3
+worker_count: 3
