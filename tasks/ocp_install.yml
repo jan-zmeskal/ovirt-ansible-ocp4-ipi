@@ -8,6 +8,19 @@
       register: ocp_install_result
       no_log: true
 
+    - name: Install OpenShift {{ ocp_installer_version }} on oVirt using custom RHCOS template
+      shell: "{{ install_dir }}/{{ installer_binary }} create cluster --dir={{ resources_subdir }} --log-level={{ ocp_installer_log_level }}"
+      environment:
+        OVIRT_CONFIG: "{{ install_dir }}/{{ ovirt_credentials_file }}"
+        OPENSHIFT_INSTALL_OS_IMAGE_OVERRIDE: rhcos_custom
+        TF_VAR_ovirt_template_mem: 32768
+        TF_VAR_ovirt_template_cpu: 8
+        TF_VAR_ovirt_master_mem: 32768
+        TF_VAR_ovirt_master_cpu: 8
+      when: rhcos_use_custom_template
+      register: ocp_install_result
+      no_log: true
+
   rescue:
     - name: Print OCP installation log
       debug:
