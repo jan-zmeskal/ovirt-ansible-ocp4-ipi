@@ -1,10 +1,10 @@
 ---
 - name: Authenticate with oVirt
   ovirt_auth:
-    url: "{{ engine_api_url }}"
+    url: "{{ engine_url }}"
     username: "{{ engine_user }}"
     password: "{{ engine_password }}"
-    ca_file: "{{ engine_ca_path }}/{{ engine_ca }}"
+    ca_file: "{{ engine_cafile }}"
 
 - name: Get oVirt cluster info
   ovirt_cluster_info:

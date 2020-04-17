@@ -8,6 +8,7 @@ ocp_installer_log_level: debug
 
 # RHCOS
 rhcos_use_custom_template: false
+rhcos_reuse_existing_template: false
 
 oc_binary: oc  # Alternative is kubectl
 ovirt_network_name: ovirtmgmt

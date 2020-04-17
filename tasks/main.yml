@@ -5,8 +5,8 @@
 - name: Prepare oVirt engine as the installer machine
   include_tasks: prepare_engine.yml
 
-- name: Upload custom RHCOS template
-  include_tasks: upload_custom_rhcos.yml
+- name: Set up custom RHCOS template
+  include_tasks: custom_rhcos.yml
   when: rhcos_use_custom_template
 
 - name: Perform OCP installation
