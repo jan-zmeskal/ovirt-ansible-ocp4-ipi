@@ -2,12 +2,9 @@
 # tasks file for ovirt.ocp4-ipi
 
 # TODO: Fail early if we don't have DNS records
+
 - name: Prepare oVirt engine as the installer machine
   include_tasks: prepare_engine.yml
-
-- name: Set up custom RHCOS template
-  include_tasks: custom_rhcos.yml
-  when: rhcos_use_custom_template
 
 - name: Perform OCP installation
   include_tasks: ocp_install.yml

@@ -1,15 +1,9 @@
 ---
 # defaults file for ovirt.ocp4-ipi
 
-# General installation info
 ocp_installer_source: nightly
 ocp_installer_version: 4.4
 ocp_installer_log_level: debug
-
-# RHCOS
-rhcos_use_custom_template: false
-rhcos_reuse_existing_template: false
-
 oc_binary: oc  # Alternative is kubectl
 ovirt_network_name: ovirtmgmt
 tmpfs_for_master_nodes: false  # Not implemented yet

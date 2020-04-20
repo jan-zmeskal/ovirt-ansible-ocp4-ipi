@@ -1,7 +1,0 @@
----
-- name: Download RHCOS image
-  include_tasks: download_rhcos_image.yml
-  when: not rhcos_reuse_existing_template
-
-- name: Upload RHCOS image to oVirt engine
-  include_tasks: upload_rhcos_image.yml
