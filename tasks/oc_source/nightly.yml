@@ -10,13 +10,3 @@
     remote_src: true
     src: "{{ oc_download.dest }}"
     dest: "{{ install_dir }}"
-
-- name: Get {{ oc_binary }} tool version
-  shell: "{{ install_dir }}/{{ oc_binary }} version"
-  register: oc_version
-  no_log: true
-
-- name: Print {{ oc_binary }} tool version
-  debug:
-    msg: "{{ oc_version.stdout }}"
-    verbosity: 2

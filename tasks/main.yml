@@ -1,7 +1,9 @@
 ---
 # tasks file for ovirt.ocp4-ipi
 
-# TODO: Fail early if we don't have DNS records
+- name: Check DNS records
+  include_tasks: dns_check.yml
+  when: perform_dns_check
 
 - name: Prepare oVirt engine as the installer machine
   include_tasks: prepare_engine.yml

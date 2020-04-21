@@ -1,13 +1,16 @@
 ---
 # vars file for ovirt.ocp4-ipi
+# These variables are used by the role internally and you shouldn't feel the need to override them
+# If you need to do so, please create an issue about this on GitHub
 
 timestamp: "{{ ansible_date_time.iso8601_basic_short }}"
 
-# oVirt variables
+# oVirt engine variables
 trusted_ca_dir: /etc/pki/ca-trust/source/anchors
 engine_ca_path: /etc/pki/ovirt-engine
 engine_ca: ca.pem
-engine_ca_file: "{{ engine_ca_path }}/{{ engine_ca }}rhcos_reuse_existing_template"
+engine_cafile: "{{ engine_ca_path }}/{{ engine_ca }}"
+engine_ssh_key: /root/.ssh/id_rsa
 
 # Installer and oc tools variables
 base_dir: /root
@@ -15,15 +18,12 @@ install_dir_prefix: ocp4-ipi
 install_dir: "{{ base_dir }}/{{ install_dir_prefix}}-{{ ocp_cluster_name }}-{{ timestamp }}"
 resources_subdir: "{{ install_dir }}/resources"
 installer_binary: openshift-install
+installer_log_file: .openshift_install.log
 nightly_source_server: https://mirror.openshift.com
 nightly_source_path: pub/openshift-v4/x86_64/clients/ocp-dev-preview
 nightly_source_installer_file: openshift-install-linux.tar.gz
-oc_source: nightly
 nightly_source_oc_file: openshift-client-linux.tar.gz
 
 # Installation files
 ovirt_credentials_file: ovirt-config.yaml
 install_config_file: install-config.yaml
-
-# RHCOS
-rhcos_custom_template_name: rhcos-custom-{{ timestamp }}

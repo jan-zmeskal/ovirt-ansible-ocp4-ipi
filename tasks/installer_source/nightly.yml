@@ -13,11 +13,10 @@
     dest: "{{ install_dir }}"
 
 - name: Get installer version
-  shell: "{{ install_dir }}/{{ installer_binary }} version"
+  command: "{{ install_dir }}/{{ installer_binary }} version"
   register: installer_version
   no_log: true
 
 - name: Print installer version
   debug:
     msg: "OpenShift Installer Version: {{ installer_version.stdout_lines[0].split()[-1] }}"
-    verbosity: 2

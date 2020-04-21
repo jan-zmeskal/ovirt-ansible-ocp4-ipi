@@ -1,4 +1,0 @@
----
-- hosts: localhost
-  roles:
-    - ovirt.ocp4-ipi

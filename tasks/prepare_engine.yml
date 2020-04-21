@@ -15,10 +15,12 @@
 - name: Get info about oVirt engine
   include_tasks: ovirt_info.yml
 
+- name: Set up engine's public SSH key
+  include_tasks: engine_ssh_key.yml
+  when: include_engine_ssh_key
+
 - name: Configure OCP installation
   include_tasks: install_config.yml
-
-# TODO: Set up /etc/resolv.conf?
 
 - name: Download OpenShift installer nightly build
   include_tasks: installer_source/nightly.yml

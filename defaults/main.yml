@@ -1,11 +1,17 @@
 ---
 # defaults file for ovirt.ocp4-ipi
+# These are basic default you might want to change according to your conditions
 
-ocp_installer_source: nightly
-ocp_installer_version: 4.4
+ocp_installer_source: nightly  # At this point, only nightly is supported
+oc_source: nightly  # At this point, only nightly is supported
+ocp_installer_version: 4.4  # oVirt is supported as an OCP provider since OCP4.4
 ocp_installer_log_level: debug
 oc_binary: oc  # Alternative is kubectl
 ovirt_network_name: ovirtmgmt
 tmpfs_for_master_nodes: false  # Not implemented yet
-master_count: 3
+master_count: 3  # Keep in mind that having less than three master nodes is unsupported
 worker_count: 3
+
+# Miscellaneous steps
+perform_dns_check: true  # If set to true, role will fail early if you haven't set up DNS entries for API and Ingress
+include_engine_ssh_key: true  # If set to true, public SSH key of engine machine will be included in RHCOS nodes

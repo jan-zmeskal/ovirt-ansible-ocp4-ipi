@@ -1,0 +1,6 @@
+---
+- name: Check for OpenShift API DNS entry
+  command: "host api.{{ ocp_cluster_name }}.{{ ocp_base_domain }}"
+
+- name: Check for OpenShift Ingress DNS entry by trying to resolve webconsole
+  command: "host console-openshift-console.apps.{{ ocp_cluster_name }}.{{ ocp_base_domain }}"

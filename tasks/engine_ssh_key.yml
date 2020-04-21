@@ -1,0 +1,9 @@
+---
+- name: Generate engine's SSH keypair
+  openssh_keypair:
+    path: "{{ engine_ssh_key }}"
+
+- name: Register engine's public SSH key
+  command: "cat {{ engine_ssh_key }}.pub"
+  no_log: true
+  register: public_ssh_key

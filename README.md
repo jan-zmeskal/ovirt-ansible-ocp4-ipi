@@ -1,12 +1,29 @@
-Role Name
+ovirt-ansible-ocp4-ipi
 =========
 
-A brief description of the role goes here.
+<aside class="notice">
+This role is not officially supported by Red Hat. It's my personal project to ease my daily work.
+</aside>
+
+This role automates deployment of OpenShift 4 IPI (installer-provided infrastructure) on top of oVirt.
+oVirt is supported as an OpenShift platform (or provider) since OpenShift 4.4.
+The IPI installation using `openshift-install` is admittedly quite easy in itself and requires only minimal manual intervention.
+Therefore this role is mainly intended for those who needs to perform it repeatedly,
+possibly on many oVirt engines (quality engineering, performance testing etc.)
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+- oVirt >= 4.3.9
+
+This role is intended to be executed against your oVirt engine.
+As long as you use oVirt engine as the target hosts, all of the below requirements should be in place:
+
+- Python SDK version >= 4.3
+- Ansible >= 2.9
+
+You also need to authenticate with oVirt engine before executing this role.
+Use ansible module [ovirt_auth](https://docs.ansible.com/ansible/latest/modules/ovirt_auth_module.html) to do that.
 
 Role Variables
 --------------
@@ -17,10 +34,15 @@ Role Variables
 | ocp_base_domain | UNDEF                 |                                                     |
 | rhcos_use_custom_template | False | |
 
-Dependencies
+Known issue
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+With OpenShift4.4 there is a known bug, see here: https://bugzilla.redhat.com/show_bug.cgi?id=1818577.
+`openshift-install` creates a default installation template that has some problems.
+To overcome these problems, you may upload your custom [RHCOS](https://www.openshift.com/learn/coreos/)
+template using [oVirt.image-template](https://github.com/oVirt/ovirt-ansible-image-template) role.
+If you do, just pass the name of your custom template to `custom_rhcos_template` variable.
+That will make OpenShift installer aware of your custom template.
 
 Example Playbook
 ----------------
@@ -31,12 +53,8 @@ Including an example of how to use your role (for instance, with variables passe
       roles:
          - { role: username.rolename, x: 42 }
 
-License
--------
 
-BSD
-
-Author Information
+Contact Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Email: jzmeskal@redhat.com
