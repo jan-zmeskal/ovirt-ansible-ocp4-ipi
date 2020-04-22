@@ -1,11 +1,11 @@
 ---
-- name: Download {{ oc_binary }} tool nightly build from {{ nightly_source_server }}
+- name: Download oc tool nightly build from {{ nightly_source_server }}
   get_url:
     dest: "{{ install_dir }}"
     url: "{{ nightly_source_server }}/{{ nightly_source_path }}/latest-{{ ocp_installer_version }}/{{ nightly_source_oc_file }}"
   register: oc_download
 
-- name: Extract {{ oc_binary }} tool
+- name: Extract oc tool
   unarchive:
     remote_src: true
     src: "{{ oc_download.dest }}"

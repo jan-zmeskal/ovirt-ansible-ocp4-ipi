@@ -2,9 +2,9 @@
 - name: Download installer nightly build from {{ nightly_source_server }}
   get_url:
     dest: "{{ install_dir }}"
-    url: "{{ nightly_source_server }}/{{ nightly_source_path }}/latest-{{ ocp_installer_version }}/{{ nightly_source_installer_file }}"
+    url: "{{ nightly_source_server }}/{{ nightly_source_path }}/\
+      latest-{{ ocp_installer_version }}/{{ nightly_source_installer_file }}"
   register: installer_download
-  # TODO: Add checksum verification in the future
 
 - name: Extract installer
   unarchive:

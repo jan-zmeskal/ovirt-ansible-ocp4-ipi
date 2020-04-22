@@ -26,6 +26,6 @@
   include_tasks: installer_source/nightly.yml
   when: ocp_installer_source == "nightly"
 
-- name: Download {{ oc_binary }} tool nightly build
+- name: Download oc tool nightly build
   include_tasks: oc_source/nightly.yml
   when: oc_source == "nightly"

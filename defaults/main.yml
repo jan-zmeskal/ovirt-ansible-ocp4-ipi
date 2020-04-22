@@ -6,7 +6,6 @@ ocp_installer_source: nightly  # At this point, only nightly is supported
 oc_source: nightly  # At this point, only nightly is supported
 ocp_installer_version: 4.4  # oVirt is supported as an OCP provider since OCP4.4
 ocp_installer_log_level: debug
-oc_binary: oc  # Alternative is kubectl
 ovirt_network_name: ovirtmgmt
 tmpfs_for_master_nodes: false  # Not implemented yet
 master_count: 3  # Keep in mind that having less than three master nodes is unsupported

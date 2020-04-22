@@ -7,7 +7,8 @@ This role is not officially supported by Red Hat. It's my personal project to ea
 
 This role automates deployment of OpenShift 4 IPI (installer-provided infrastructure) on top of oVirt.
 oVirt is supported as an OpenShift platform (or provider) since OpenShift 4.4.
-The IPI installation using `openshift-install` is admittedly quite easy in itself and requires only minimal manual intervention.
+The IPI installation using `openshift-install` is admittedly quite easy
+in itself and requires only minimal manual intervention.
 Therefore this role is mainly intended for those who needs to perform it repeatedly,
 possibly on many oVirt engines (quality engineering, performance testing etc.)
 
@@ -25,14 +26,14 @@ As long as you use oVirt engine as the target hosts, all of the below requiremen
 You also need to authenticate with oVirt engine before executing this role.
 Use ansible module [ovirt_auth](https://docs.ansible.com/ansible/latest/modules/ovirt_auth_module.html) to do that.
 
-Role Variables
+Required Variables
 --------------
 
-| Name                    | Default value         |                                                     |
-|-------------------------|-----------------------|-----------------------------------------------------|
-| ocp_cluster_name        | UNDEF                 |                                                     |
-| ocp_base_domain | UNDEF                 |                                                     |
-| rhcos_use_custom_template | False | |
+| Name | Default value | Description |
+|------|---------------|-------------|
+| ocp_base_domain | UNDEF | DNS domain of your OCP cluster. |
+| ocp_cluster_name | UNDEF | The name of your OCP cluster. This name will be included in the resulting domain of apps
+running on OCP like this: `console-openshift-console.apps.<ocp_cluster_name>.<ocp_base_domain>` |
 
 Known issue
 ------------
