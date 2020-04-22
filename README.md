@@ -1,9 +1,7 @@
 ovirt-ansible-ocp4-ipi
 =========
 
-<aside class="notice">
-This role is not officially supported by Red Hat. It's my personal project to ease my daily work.
-</aside>
+> :warning: This role is not officially supported by Red Hat. It's my personal project to ease my daily work.
 
 This role automates deployment of OpenShift 4 IPI (installer-provided infrastructure) on top of oVirt.
 oVirt is supported as an OpenShift platform (or provider) since OpenShift 4.4.
@@ -32,8 +30,9 @@ Required Variables
 | Name | Default value | Description |
 |------|---------------|-------------|
 | ocp_base_domain | UNDEF | DNS domain of your OCP cluster. |
-| ocp_cluster_name | UNDEF | The name of your OCP cluster. This name will be included in the resulting domain of apps
-running on OCP like this: `console-openshift-console.apps.<ocp_cluster_name>.<ocp_base_domain>` |
+| ocp_cluster_name | UNDEF | The name of your OCP cluster. This name will be included in the resulting domain of apps running on OCP like this: `console-openshift-console.apps.<ocp_cluster_name>.<ocp_base_domain>` |
+
+
 
 Known issue
 ------------
