@@ -1,13 +1,11 @@
 ovirt-ansible-ocp4-ipi
 =========
 
-> :warning: This role is not officially supported by Red Hat. It's my personal project to ease my daily work.
-
 This role automates deployment of OpenShift 4 IPI (installer-provided infrastructure) on top of oVirt.
-oVirt is supported as an OpenShift platform (or provider) since OpenShift 4.4.
+As of April 2020, oVirt is in developer preview as an OpenShift provider.
 The IPI installation using `openshift-install` is admittedly quite easy
 in itself and requires only minimal manual intervention.
-Therefore this role is mainly intended for those who needs to perform it repeatedly,
+Therefore this role is mainly intended for those who need to perform it repeatedly,
 possibly on many oVirt engines (quality engineering, performance testing etc.)
 
 Requirements
