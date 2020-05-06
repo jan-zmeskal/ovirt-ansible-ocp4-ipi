@@ -1,4 +1,0 @@
----
-# handlers file for ovirt.ocp4-ipi
-- name: Update CA trust
-  command: /bin/update-ca-trust
