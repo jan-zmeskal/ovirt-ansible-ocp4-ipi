@@ -4,12 +4,15 @@
 
 ocp_installer_source: nightly
 oc_source: nightly
-ocp_installer_version: 4.4
+ocp_installer_version: 4.5
 ocp_installer_log_level: debug
 ovirt_network_name: ovirtmgmt
 tmpfs_for_master_nodes: false  # Not implemented yet
 master_count: 3
 worker_count: 3
+# TODO
+remove_downloaded_image: false  # Not implemented yet
+remove_custom_template: false  # Not implemented yet
 
 # Miscellaneous steps
 perform_dns_check: true  # If set to true, role will fail early if you haven't set up DNS entries for API and Ingress

@@ -1,5 +1,7 @@
 ---
 # tasks file for ovirt.ocp4-ipi
+- name: Early checks
+  include_tasks: early_checks.yml
 
 - name: Check DNS records
   include_tasks: dns_check.yml

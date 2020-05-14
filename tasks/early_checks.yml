@@ -1,0 +1,48 @@
+- name: Fail if user has not acquired oVirt auth token
+  fail:
+    msg: "Please authenticate with oVirt before running this role"
+  when: ovirt_auth is not defined
+
+# TODO: FInd better solution for this
+- block:
+    - name: Fail when ocp_base_domain is not defined
+      fail:
+      when: ocp_base_domain is not defined
+
+    - name: Fail when ocp_cluster_name is not defined
+      fail:
+      when: ocp_cluster_name is not defined
+
+    - name: Fail when api_vip is not defined
+      fail:
+      when: api_vip is not defined
+
+    - name: Fail when dns_vip is not defined
+      fail:
+      when: dns_vip is not defined
+
+    - name: Fail when ingress_vip is not defined
+      fail:
+      when: ingress_vip is not defined
+
+    - name: Fail when ovirt_cluster_name is not defined
+      fail:
+      when: ovirt_cluster_name is not defined
+
+    - name: Fail when ovirt_storage_domain_name is not defined
+      fail:
+      when: ovirt_storage_domain_name is not defined
+
+    - name: Fail when pull_secret_file is not defined
+      fail:
+      when: pull_secret_file is not defined
+
+- block:
+    - name: Fail when using custom template and rhcos_node_memory_mb is not defined
+      fail:
+      when: rhcos_node_memory_mb is not defined
+
+    - name: Fail when using custom template and rhcos_node_cpu is not defined
+      fail:
+      when: rhcos_node_cpu is not defined
+  when: custom_rhcos_template is defined
