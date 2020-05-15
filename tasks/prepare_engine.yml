@@ -28,4 +28,6 @@
 
 - name: Download oc tool nightly build
   include_tasks: oc_source/nightly.yml
-  when: oc_source == "nightly"
+  when:
+    - oc_source == "nightly"
+    - download_oc_tool

@@ -12,3 +12,4 @@
 
 - name: Perform OCP installation
   include_tasks: ocp_install.yml
+  when: not stop_before_installation

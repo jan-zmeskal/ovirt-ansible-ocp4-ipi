@@ -6,6 +6,7 @@ ocp_installer_source: nightly
 oc_source: nightly
 ocp_installer_version: 4.5
 ocp_installer_log_level: debug
+terraform_log_level: debug
 ovirt_network_name: ovirtmgmt
 tmpfs_for_master_nodes: false  # Not implemented yet
 master_count: 3
@@ -14,6 +15,8 @@ worker_count: 3
 remove_downloaded_image: false  # Not implemented yet
 remove_custom_template: false  # Not implemented yet
 
-# Miscellaneous steps
+# Flow control
 perform_dns_check: true  # If set to true, role will fail early if you haven't set up DNS entries for API and Ingress
 include_engine_ssh_key: true  # If set to true, public SSH key of engine machine will be included in RHCOS nodes
+stop_before_installation: false  # If set to true, the installation won't be run, but everything will be prepared
+download_oc_tool: false  # If set to true, downloads the oc tool and puts it into installation folder

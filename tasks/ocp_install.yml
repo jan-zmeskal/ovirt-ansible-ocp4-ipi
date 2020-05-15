@@ -10,6 +10,7 @@
         --dir={{ resources_subdir }} --log-level={{ ocp_installer_log_level }}
       environment:
         OVIRT_CONFIG: "{{ install_dir }}/{{ ovirt_credentials_file }}"
+        TF_LOG: "{{ terraform_log_level }}"
       when: custom_rhcos_template is not defined
       register: ocp_install_result
       no_log: true
@@ -20,6 +21,7 @@
         --dir={{ resources_subdir }} --log-level={{ ocp_installer_log_level }}
       environment:
         OVIRT_CONFIG: "{{ install_dir }}/{{ ovirt_credentials_file }}"
+        TF_LOG: "{{ terraform_log_level }}"
         OPENSHIFT_INSTALL_OS_IMAGE_OVERRIDE: "{{ custom_rhcos_template }}"
         TF_VAR_ovirt_template_mem: "{{ rhcos_node_memory_mb }}"
         TF_VAR_ovirt_template_cpu: "{{ rhcos_node_cpu }}"
