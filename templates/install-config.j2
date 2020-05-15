@@ -32,6 +32,9 @@ platform:
     ovirt_cluster_id: {{ ovirt_cluster_id }}
     ovirt_network_name: {{ ovirt_network_name }}
     ovirt_storage_domain_id: {{ ovirt_storage_domain_id }}
+{% if ovirt_vnic_profile_id %}
+    vnicProfileID: {{ ovirt_vnic_profile_id }}
+{% endif %}
 publish: External
 pullSecret: '{{ pull_secret | to_json }}'
 sshKey: |

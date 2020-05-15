@@ -37,6 +37,12 @@
       fail:
       when: pull_secret_file is not defined
 
+- name: Check attributes that got in with OCP4.5
+  block:
+    - name: Fail when ovirt_vnic_profile_id is not defined
+      fail:
+      when: ovirt_vnic_profile_id is not defined
+
 - block:
     - name: Fail when using custom template and rhcos_node_memory_mb is not defined
       fail:
