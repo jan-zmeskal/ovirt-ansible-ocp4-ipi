@@ -24,7 +24,9 @@
 
 - name: Download OpenShift installer nightly build
   include_tasks: installer_source/nightly.yml
-  when: ocp_installer_source == "nightly"
+  when:
+    - ocp_installer_source == "nightly"
+    - download_openshift_install
 
 - name: Download oc tool nightly build
   include_tasks: oc_source/nightly.yml

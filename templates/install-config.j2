@@ -4,13 +4,51 @@ compute:
 - architecture: amd64
   hyperthreading: Enabled
   name: worker
-  platform: {}
+  platform:
+    ovirt:
+{% if custom_worker_cpu_sockets and custom_worker_cpu_cores %}
+      cpu:
+        sockets: {{ custom_worker_cpu_sockets }}
+        cores: {{ custom_worker_cpu_cores }}
+{% endif %}
+{% if custom_worker_memory_mb %}
+      memoryMB: {{ custom_worker_memory_mb }}
+{% endif %}
+{% if custom_worker_instance_type_id %}
+      instanceTypeID: {{ custom_worker_instance_type_id }}
+{% endif %}
+{% if custom_worker_disk_size_gb %}
+      osDisk:
+        sizeGB: {{ custom_worker_disk_size_gb }}
+{% endif %}
+{% if custom_worker_vm_type %}
+      vmType: {{ custom_worker_vm_type }}
+{% endif %}
   replicas: {{ worker_count }}
 controlPlane:
   architecture: amd64
   hyperthreading: Enabled
   name: master
-  platform: {}
+  platform:
+    ovirt:
+{% if custom_master_cpu_sockets and custom_master_cpu_cores %}
+      cpu:
+        sockets: {{ custom_master_cpu_sockets }}
+        cores: {{ custom_master_cpu_cores }}
+{% endif %}
+{% if custom_master_memory_mb %}
+      memoryMB: {{ custom_master_memory_mb }}
+{% endif %}
+{% if custom_master_instance_type_id %}
+      instanceTypeID: {{ custom_master_instance_type_id }}
+{% endif %}
+{% if custom_master_disk_size_gb %}
+      osDisk:
+        sizeGB: {{ custom_master_disk_size_gb }}
+{% endif %}
+{% if custom_master_vm_type %}
+      vmType: {{ custom_master_vm_type }}
+{% endif %}
   replicas: {{ master_count }}
 metadata:
   creationTimestamp: null
@@ -32,9 +70,7 @@ platform:
     ovirt_cluster_id: {{ ovirt_cluster_id }}
     ovirt_network_name: {{ ovirt_network_name }}
     ovirt_storage_domain_id: {{ ovirt_storage_domain_id }}
-{% if ovirt_vnic_profile_id %}
     vnicProfileID: {{ ovirt_vnic_profile_id }}
-{% endif %}
 publish: External
 pullSecret: '{{ pull_secret | to_json }}'
 sshKey: |

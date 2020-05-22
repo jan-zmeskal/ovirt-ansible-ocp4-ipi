@@ -3,7 +3,7 @@
     msg: "Please authenticate with oVirt before running this role"
   when: ovirt_auth is not defined
 
-# TODO: FInd better solution for this
+# TODO: Find better solution for this
 - block:
     - name: Fail when ocp_base_domain is not defined
       fail:
@@ -36,19 +36,3 @@
     - name: Fail when pull_secret_file is not defined
       fail:
       when: pull_secret_file is not defined
-
-- name: Check attributes that got in with OCP4.5
-  block:
-    - name: Fail when ovirt_vnic_profile_id is not defined
-      fail:
-      when: ovirt_vnic_profile_id is not defined
-
-- block:
-    - name: Fail when using custom template and rhcos_node_memory_mb is not defined
-      fail:
-      when: rhcos_node_memory_mb is not defined
-
-    - name: Fail when using custom template and rhcos_node_cpu is not defined
-      fail:
-      when: rhcos_node_cpu is not defined
-  when: custom_rhcos_template is defined
