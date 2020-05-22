@@ -4,30 +4,13 @@
     msg: "The installation is starting. You can follow its progress in {{ resources_subdir }}/{{ installer_log_file }}"
 
 - block:
-    - name: Install OpenShift {{ ocp_installer_version }} on oVirt without using custom RHCOS template
+    - name: Install OpenShift {{ ocp_installer_version }} on oVirt
       shell: >-
         {{ install_dir }}/{{ installer_binary }} create cluster
         --dir={{ resources_subdir }} --log-level={{ ocp_installer_log_level }}
       environment:
         OVIRT_CONFIG: "{{ install_dir }}/{{ ovirt_credentials_file }}"
         TF_LOG: "{{ terraform_log_level }}"
-      when: custom_rhcos_template is not defined
-      register: ocp_install_result
-      no_log: true
-
-    - name: Install OpenShift {{ ocp_installer_version }} on oVirt using custom RHCOS template
-      shell: >-
-        {{ install_dir }}/{{ installer_binary }} create cluster
-        --dir={{ resources_subdir }} --log-level={{ ocp_installer_log_level }}
-      environment:
-        OVIRT_CONFIG: "{{ install_dir }}/{{ ovirt_credentials_file }}"
-        TF_LOG: "{{ terraform_log_level }}"
-        OPENSHIFT_INSTALL_OS_IMAGE_OVERRIDE: "{{ custom_rhcos_template }}"
-        TF_VAR_ovirt_template_mem: "{{ rhcos_node_memory_mb }}"
-        TF_VAR_ovirt_template_cpu: "{{ rhcos_node_cpu }}"
-        TF_VAR_ovirt_master_mem: "{{ rhcos_node_memory_mb }}"
-        TF_VAR_ovirt_master_cpu: "{{ rhcos_node_cpu }}"
-      when: custom_rhcos_template is defined
       register: ocp_install_result
       no_log: true
 

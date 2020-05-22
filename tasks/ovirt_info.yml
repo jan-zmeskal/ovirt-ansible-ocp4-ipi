@@ -1,24 +1,33 @@
 ---
-- name: Fail if not authenticated
-  fail:
-    msg: Please authenticate with oVirt engine before running this role
-  when: ovirt_auth is undefined or not ovirt_auth
-
-- name: Get oVirt cluster info
+- name: Get info on cluster {{ ovirt_cluster_name }}
   ovirt_cluster_info:
     auth: "{{ ovirt_auth }}"
     pattern: "name={{ ovirt_cluster_name }}"
+    fetch_nested: true
+    nested_attributes:
+      - name
   register: cluster_info
   no_log: true
 
-- name: Get oVirt storage domain info
+- name: Get info on storage domain {{ ovirt_storage_domain_name }}
   ovirt_storage_domain_info:
     auth: "{{ ovirt_auth }}"
     pattern: "name={{ ovirt_storage_domain_name }}"
   register: storage_domain_info
   no_log: true
 
-- name: Register IDs of oVirt cluster and storage domain
+- name: Get info on network {{ ovirt_network_name }} in data center {{ cluster_info.ovirt_clusters[0].data_center.name }}
+  ovirt_network_info:
+    auth: "{{ ovirt_auth }}"
+    pattern: "name={{ ovirt_network_name }} datacenter={{ cluster_info.ovirt_clusters[0].data_center.name }}"
+    fetch_nested: true
+    nested_attributes:
+      - name
+  register: network_info
+  no_log: true
+
+- name: Register IDs of oVirt cluster, storage domain and vNIC profile
   set_fact:
     ovirt_cluster_id: "{{ cluster_info.ovirt_clusters[0].id }}"
     ovirt_storage_domain_id: "{{ storage_domain_info.ovirt_storage_domains[0].id }}"
+    ovirt_vnic_profile_id: "{{ network_info.ovirt_networks[0].vnic_profiles[0].id }}"
