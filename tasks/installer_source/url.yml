@@ -1,0 +1,8 @@
+---
+- name: Download installer from URL {{ ocp_installer_url }}
+  get_url:
+    dest: "{{ install_dir }}"
+    url: "{{ ocp_installer_url }}"
+  register: installer_download
+
+- include_tasks: common.yml

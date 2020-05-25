@@ -1,0 +1,16 @@
+---
+- name: Extract installer
+  unarchive:
+    remote_src: true
+    src: "{{ installer_download.dest }}"
+    dest: "{{ install_dir }}"
+
+- name: Get installer version
+  command: "{{ install_dir }}/{{ installer_binary }} version"
+  register: installer_version
+  no_log: true
+  changed_when: false
+
+- name: Print installer version
+  debug:
+    msg: "OpenShift Installer Version: {{ installer_version.stdout_lines[0].split()[-1] }}"

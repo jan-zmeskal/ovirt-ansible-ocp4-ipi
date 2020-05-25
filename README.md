@@ -52,9 +52,10 @@ Role variables
 | worker_count | 3 | Number of worker nodes in OpenShift cluster. |
 | pull_secret_file | UNDEF | The file containing your pull secret that can be obtained at [cloud.redhat.com](https://cloud.redhat.com/). |
 | ssh_keys | UNDEF | List of strings. Each of the strings is a public SSH key that will be propagated to OpenShift RHCOS nodes, allowing the user to log in. |
-| ocp_installer_source | nightly | Where to acquire `openshift-install` tool. At this point, only nightly is supported. |
+| ocp_installer_source | nightly | Where to acquire `openshift-install` tool. Options: "nightly" to automatically get the latest nightly build from download server, "url" to download from arbitrary location. |
+| ocp_installer_url | UNDEF | URL to get `openshift-install` from. To be used when `ocp_installer_source` is "url". |
 | oc_source | nightly | Where to acquire `oc` tool. At this point, only nightly is supported. |
-| ocp_installer_version | 4.4 | What version of OpenShift you want to install. oVirt as OpenShift provider is in developer preview now (April 2020). |
+| ocp_installer_version | 4.5 | What version of OpenShift you want to install. |
 | ocp_installer_log_level | debug | Verbosity of OpenShift installer. This is passed to `--log-level` parameter of `openshift-install`. |
 
 Customizing OpenShift nodes

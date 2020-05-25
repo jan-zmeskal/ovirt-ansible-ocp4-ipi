@@ -36,3 +36,10 @@
     - name: Fail when pull_secret_file is not defined
       fail:
       when: pull_secret_file is not defined
+
+- block:
+    - name: Fail when ocp_installer_url has been provided and ocp_installer_source is not url
+      fail:
+      when:
+        - ocp_installer_url is defined
+        - ocp_installer_source != 'url'
