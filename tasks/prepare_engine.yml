@@ -9,18 +9,18 @@
     path: "{{ resources_subdir }}"
     state: directory
 
-# - name: Set up oVirt credentials
-#   include_tasks: ovirt_credentials.yml
+- name: Set up oVirt credentials
+  include_tasks: ovirt_credentials.yml
 
-# - name: Get info about oVirt engine
-#   include_tasks: ovirt_info.yml
+- name: Get info about oVirt engine
+  include_tasks: ovirt_info.yml
 
-# - name: Set up engine's public SSH key
-#   include_tasks: engine_ssh_key.yml
-#   when: include_engine_ssh_key
+- name: Set up engine's public SSH key
+  include_tasks: engine_ssh_key.yml
+  when: include_engine_ssh_key
 
-# - name: Configure OCP installation
-#   include_tasks: install_config.yml
+- name: Configure OCP installation
+  include_tasks: install_config.yml
 
 - name: Download OpenShift installer nightly build
   include_tasks: installer_source/nightly.yml

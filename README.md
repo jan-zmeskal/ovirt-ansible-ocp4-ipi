@@ -55,7 +55,7 @@ Role variables
 | ocp_installer_source | nightly | Where to acquire `openshift-install` tool. Options: "nightly" to automatically get the latest nightly build from download server, "url" to download from arbitrary location. |
 | ocp_installer_url | UNDEF | URL to get `openshift-install` from. To be used when `ocp_installer_source` is "url". |
 | oc_source | nightly | Where to acquire `oc` tool. At this point, only nightly is supported. |
-| ocp_installer_version | 4.5 | What version of OpenShift you want to install. |
+| ocp_installer_version | 4.5 | What version of OpenShift you want to install. Works only when `ocp_installer_source` is "nightly". |
 | ocp_installer_log_level | debug | Verbosity of OpenShift installer. This is passed to `--log-level` parameter of `openshift-install`. |
 
 Customizing OpenShift nodes

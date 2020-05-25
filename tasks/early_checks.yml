@@ -37,9 +37,16 @@
       fail:
       when: pull_secret_file is not defined
 
-- block:
+- name: Check combinations of parameters
+  block:
     - name: Fail when ocp_installer_url has been provided and ocp_installer_source is not url
       fail:
       when:
         - ocp_installer_url is defined
         - ocp_installer_source != 'url'
+
+    - name: Fail when we want to proceed with installation but we don't download the installer
+      fail:
+      when:
+      - not stop_before_installation
+      - not download_openshift_install
