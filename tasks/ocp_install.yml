@@ -5,7 +5,7 @@
 
 - block:
     - name: Install OpenShift {{ ocp_installer_version }} on oVirt
-      shell: >-
+      command: >-
         {{ install_dir }}/{{ installer_binary }} create cluster
         --dir={{ resources_subdir }} --log-level={{ ocp_installer_log_level }}
       environment:

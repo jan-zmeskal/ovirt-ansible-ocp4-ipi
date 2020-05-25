@@ -7,3 +7,4 @@
   command: "cat {{ engine_ssh_key }}.pub"
   no_log: true
   register: public_ssh_key
+  changed_when: false

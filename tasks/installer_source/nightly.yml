@@ -16,6 +16,7 @@
   command: "{{ install_dir }}/{{ installer_binary }} version"
   register: installer_version
   no_log: true
+  changed_when: false
 
 - name: Print installer version
   debug:

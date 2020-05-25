@@ -1,3 +1,5 @@
+![Ansible Lint](https://github.com/jan-zmeskal/ovirt-ansible-ocp4-ipi/workflows/Ansible%20Lint/badge.svg)
+
 ovirt-ansible-ocp4-ipi
 =========
 

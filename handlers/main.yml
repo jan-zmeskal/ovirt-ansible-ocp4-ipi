@@ -1,0 +1,2 @@
+- name: Update CA trust
+  command: /bin/update-ca-trust

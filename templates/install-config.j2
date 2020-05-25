@@ -6,22 +6,22 @@ compute:
   name: worker
   platform:
     ovirt:
-{% if custom_worker_cpu_sockets and custom_worker_cpu_cores %}
+{% if custom_worker_cpu_sockets is defined and custom_worker_cpu_cores is defined %}
       cpu:
         sockets: {{ custom_worker_cpu_sockets }}
         cores: {{ custom_worker_cpu_cores }}
 {% endif %}
-{% if custom_worker_memory_mb %}
+{% if custom_worker_memory_mb is defined %}
       memoryMB: {{ custom_worker_memory_mb }}
 {% endif %}
-{% if custom_worker_instance_type_id %}
+{% if custom_worker_instance_type_id is defined %}
       instanceTypeID: {{ custom_worker_instance_type_id }}
 {% endif %}
-{% if custom_worker_disk_size_gb %}
+{% if custom_worker_disk_size_gb is defined %}
       osDisk:
         sizeGB: {{ custom_worker_disk_size_gb }}
 {% endif %}
-{% if custom_worker_vm_type %}
+{% if custom_worker_vm_type is defined %}
       vmType: {{ custom_worker_vm_type }}
 {% endif %}
   replicas: {{ worker_count }}
@@ -31,22 +31,22 @@ controlPlane:
   name: master
   platform:
     ovirt:
-{% if custom_master_cpu_sockets and custom_master_cpu_cores %}
+{% if custom_master_cpu_sockets is defined and custom_master_cpu_cores is defined %}
       cpu:
         sockets: {{ custom_master_cpu_sockets }}
         cores: {{ custom_master_cpu_cores }}
 {% endif %}
-{% if custom_master_memory_mb %}
+{% if custom_master_memory_mb is defined %}
       memoryMB: {{ custom_master_memory_mb }}
 {% endif %}
-{% if custom_master_instance_type_id %}
+{% if custom_master_instance_type_id is defined %}
       instanceTypeID: {{ custom_master_instance_type_id }}
 {% endif %}
-{% if custom_master_disk_size_gb %}
+{% if custom_master_disk_size_gb is defined %}
       osDisk:
         sizeGB: {{ custom_master_disk_size_gb }}
 {% endif %}
-{% if custom_master_vm_type %}
+{% if custom_master_vm_type is defined %}
       vmType: {{ custom_master_vm_type }}
 {% endif %}
   replicas: {{ master_count }}
