@@ -58,7 +58,7 @@ networking:
   - cidr: 10.128.0.0/14
     hostPrefix: 23
   machineNetwork:
-  - cidr: 10.0.0.0/16
+  - cidr: {{ ocp_machine_network_cidr | default("10.0.0.0/16", true) }}
   networkType: OpenShiftSDN
   serviceNetwork:
   - 172.30.0.0/16

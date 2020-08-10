@@ -50,6 +50,7 @@ Role variables
 | rhcos_node_cpu | UNDEF | The count of logical CPUs that OpenShift nodes should have when using custom template. |
 | master_count | 3 | Number of master machines (control plane) in OpenShift cluster. Keep in mind that having less than three masters is not supported. |
 | worker_count | 3 | Number of worker nodes in OpenShift cluster. |
+| ocp_machine_network_cidr | 10.0.0.0/16 | CIDR notation of network where your OCP nodes will live. |
 | pull_secret_file | UNDEF | The file containing your pull secret that can be obtained at [cloud.redhat.com](https://cloud.redhat.com/). |
 | ssh_keys | UNDEF | List of strings. Each of the strings is a public SSH key that will be propagated to OpenShift RHCOS nodes, allowing the user to log in. |
 | ocp_installer_source | nightly | Where to acquire `openshift-install` tool. Options: "nightly" to automatically get the latest nightly build from download server, "url" to download from arbitrary location. |
