@@ -3,6 +3,10 @@
 - name: Early checks
   include_tasks: early_checks.yml
 
+- name: Prepare custom RHCOS template.yml
+  include_tasks: custom_rhcos.yml
+  when: prepare_custom_rhcos_template
+
 - name: Check DNS records
   include_tasks: dns_check.yml
   when: perform_dns_check

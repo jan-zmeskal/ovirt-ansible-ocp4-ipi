@@ -1,4 +1,10 @@
 ---
+- name: Clear cache
+  file:
+    path: "{{ ansible_env.HOME }}/.cache }}"
+    state: absent
+  when: clear_cache
+
 - name: Create main installation directory
   file:
     path: "{{ install_dir }}"

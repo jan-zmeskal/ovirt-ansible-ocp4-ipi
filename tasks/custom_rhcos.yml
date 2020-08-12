@@ -1,0 +1,36 @@
+---
+# I've been working on this up till the point where role is included
+# So until task Extract the QCOW image everything should work
+
+# - name: Fetch data file with RHCOS versions
+#   uri:
+#     url: "https://raw.githubusercontent.com/openshift/installer/release-{{ ocp_installer_version }}/data/data/rhcos.json"
+#   register: rhcos_data_file
+
+# - name: Extract the OSP image URL
+#   set_fact:
+#     qcow_url_compressed: "{{ rhcos_data_file.json.baseURI + rhcos_data_file.json.images.openstack.path }}"
+
+# - name: Download compressed QCOW image
+#   get_url:
+#     dest: "{{ qcow_download_dir | default(ansible_env.HOME, true) }}"
+#     force: yes
+#     url: "{{ qcow_url_compressed }}"
+#   register: download_result
+
+# - name: Extract the QCOW image
+#   shell: "gunzip -c {{ download_result.dest }} > {{ download_result.dest | dirname  }}/rhcos.qcow2"
+
+  # roles:
+  #   - oVirt.image-template
+
+  # post_tasks:
+  #   - name: remove archive from file system
+  #     file:
+  #       path: "{{ download_result.dest }}"
+  #       state: absent
+
+  #   - name: remove qcow image from file system
+  #     file:
+  #       path: "{{ qcow_path }}"
+  #       state: absent
